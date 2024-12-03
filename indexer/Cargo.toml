@@ -4,3 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.94"
+clap = "3.2"
+cometindex = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9" }
+pindexer = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9" }
+serde_json = "1.0.133"
+tokio = "1.42.0"
