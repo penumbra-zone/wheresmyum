@@ -1,0 +1,14 @@
+node_modules
+
+/.cache
+/build
+public/build/
+.env
+.envrc
+.direnv/
+.idea
+
+# optional db certs
+*.pem
+
+.idea
