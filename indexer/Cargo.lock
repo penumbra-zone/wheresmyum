@@ -2200,6 +2200,8 @@ dependencies = [
  "anyhow",
  "clap",
  "cometindex",
+ "penumbra-proto",
+ "penumbra-shielded-pool",
  "pindexer",
  "serde_json",
  "tokio",

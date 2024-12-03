@@ -7,6 +7,8 @@ edition = "2021"
 anyhow = "1.0.94"
 clap = "3.2"
 cometindex = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9" }
+penumbra-proto = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9" }
+penumbra-shielded-pool = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9", default-features = false }
 pindexer = { git = "https://github.com/penumbra-zone/penumbra", branch = "main", version = "0.80.9" }
 serde_json = "1.0.133"
 tokio = "1.42.0"
