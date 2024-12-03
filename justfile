@@ -14,3 +14,11 @@ container:
 run-container:
   just container
   podman run -e PENUMBRA_INDEXER_ENDPOINT -e PENUMBRA_INDEXER_CA_CERT -p 3000:3000 -it wheresmyum
+
+cargo-manifest := "indexer/Cargo.toml"
+
+check-rust:
+  cargo check --release --manifest-path {{cargo-manifest}}
+
+run-rust:
+  cargo run --release --manifest-path {{cargo-manifest}}
