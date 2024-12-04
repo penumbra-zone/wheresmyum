@@ -2,11 +2,13 @@ syntax = "proto3";
 
 package wheresmyum.v1;
 
+import "penumbra/core/num/v1/num.proto";
+
 message TestRequest {
 }
 
 message TestResponse {
-  repeated string msgs = 1;
+  repeated penumbra.core.num.v1.Amount msgs = 1;
 }
 
 service TestService {

@@ -8,7 +8,7 @@
     "dev": "remix vite:dev --host",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
-    "protos": "buf generate --path protobuf",
+    "protos": "buf generate && sh scripts/protobuf-deps.sh",
     "typecheck": "tsc"
   },
   "dependencies": {

@@ -1,4 +1,5 @@
 import { Jsonified } from "@penumbra-zone/types/jsonified";
+import { joinLoHi } from "@penumbra-zone/types/lo-hi";
 import { Density } from "@penumbra-zone/ui/Density";
 import { Display } from "@penumbra-zone/ui/Display";
 import { Text } from "@penumbra-zone/ui/Text";
@@ -25,7 +26,7 @@ export default function Index() {
       <Density compact>
         {resp.msgs.map((x, i) => (
           <Text p color="text.primary" key={i}>
-            {x}
+            {joinLoHi(x.lo, x.hi).toString()}
           </Text>
         ))}
       </Density>

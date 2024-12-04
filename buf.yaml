@@ -6,3 +6,9 @@ lint:
 breaking:
   use:
     - FILE
+deps:
+  - buf.build/penumbra-zone/penumbra
+build:
+  excludes:
+    - "node_modules"
+    - ".cache"

@@ -5,8 +5,10 @@ plugins:
   # This will invoke protoc-gen-es and write output to protobuf/gen
   - plugin: es
     out: protobuf/gen
-    opt: target=ts
-  # This will invoke protoc-gen-connect-es
+    opt:
+      - target=ts
+      - import_extension=none
+    # This will invoke protoc-gen-connect-es
   - plugin: connect-es
     out: protobuf/gen
     opt: target=ts
