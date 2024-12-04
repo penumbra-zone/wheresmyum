@@ -8,9 +8,15 @@
     "dev": "remix vite:dev --host",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
+    "protos": "buf generate",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@bufbuild/buf": "^1.47.2",
+    "@bufbuild/connect": "^0.13.0",
+    "@bufbuild/protobuf": "^1.10.0",
+    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.4.0",
     "@penumbra-labs/registry": "^12.0.0",
     "@penumbra-zone/protobuf": "^6.3.0",
     "@penumbra-zone/types": "^26.2.1",

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package wheresmyum.v1;
+
+message TestRequest {
+}
+
+message TestResponse {
+  repeated string msgs = 1;
+}
+
+service TestService {
+  rpc Test(TestRequest) returns (TestResponse);
+}
