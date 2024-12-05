@@ -2,6 +2,7 @@ import { Jsonified } from "@penumbra-zone/types/jsonified";
 import { Density } from "@penumbra-zone/ui/Density";
 import { Display } from "@penumbra-zone/ui/Display";
 import { Table } from "@penumbra-zone/ui/Table";
+import { ValueViewComponent } from "@penumbra-zone/ui/ValueView";
 import { MetaFunction, useLoaderData } from "@remix-run/react";
 import {
   Transfer,
@@ -19,6 +20,9 @@ const TransferRow = ({ transfer }: { transfer: Transfer }) => {
   return (
     <Table.Tr>
       <Table.Td>
+        <ValueViewComponent valueView={transfer.value} />
+      </Table.Td>
+      <Table.Td>
         <Timestamp timestamp={transfer.timestamp} />
       </Table.Td>
     </Table.Tr>
@@ -30,6 +34,7 @@ const ShowTransfers = ({ transfers }: { transfers: Transfer[] }) => {
     <Table>
       <Table.Thead>
         <Table.Tr>
+          <Table.Th>Value</Table.Th>
           <Table.Th>Time</Table.Th>
         </Table.Tr>
       </Table.Thead>

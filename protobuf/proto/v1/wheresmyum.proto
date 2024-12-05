@@ -4,6 +4,7 @@ package wheresmyum.v1;
 
 import "google/protobuf/timestamp.proto";
 import "penumbra/core/component/shielded_pool/v1/shielded_pool.proto";
+import "penumbra/core/asset/v1/asset.proto";
 import "penumbra/core/txhash/v1/txhash.proto";
 
 message Transfer {
@@ -15,6 +16,8 @@ message Transfer {
   uint64 height = 3;
   // The time at which the transfer was initiated.
   google.protobuf.Timestamp timestamp = 4;
+  // A view of the value being transferred.
+  penumbra.core.asset.v1.ValueView value = 5;
 }
 
 message TransfersRequest {

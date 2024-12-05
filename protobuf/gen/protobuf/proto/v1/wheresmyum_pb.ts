@@ -7,6 +7,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { EventOutboundFungibleTokenTransfer } from "@penumbra-zone/protobuf/penumbra/core/component/shielded_pool/v1/shielded_pool_pb";
 import { TransactionId } from "@penumbra-zone/protobuf/penumbra/core/txhash/v1/txhash_pb";
+import { ValueView } from "@penumbra-zone/protobuf/penumbra/core/asset/v1/asset_pb";
 
 /**
  * @generated from message wheresmyum.v1.Transfer
@@ -40,6 +41,13 @@ export class Transfer extends Message<Transfer> {
    */
   timestamp?: Timestamp;
 
+  /**
+   * A view of the value being transferred.
+   *
+   * @generated from field: @penumbra-zone/protobuf/penumbra.core.asset.v1.ValueView value = 5;
+   */
+  value?: ValueView;
+
   constructor(data?: PartialMessage<Transfer>) {
     super();
     proto3.util.initPartial(data, this);
@@ -52,6 +60,7 @@ export class Transfer extends Message<Transfer> {
     { no: 2, name: "tx", kind: "message", T: TransactionId },
     { no: 3, name: "height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 4, name: "timestamp", kind: "message", T: Timestamp },
+    { no: 5, name: "value", kind: "message", T: ValueView },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Transfer {

@@ -17,8 +17,30 @@ import {
 import {
   AssetId,
   Value,
+  ValueView,
+  ValueView_KnownAssetId,
+  ValueView_UnknownAssetId,
 } from "@penumbra-zone/protobuf/penumbra/core/asset/v1/asset_pb";
 import { Address } from "@penumbra-zone/protobuf/penumbra/core/keys/v1/keys_pb";
+import registry from "../registry";
+
+const viewValue = (value: Value): ValueView => {
+  const metadata = value.assetId && registry.getMetadata(value.assetId);
+  if (metadata) {
+    return new ValueView({
+      valueView: {
+        case: "knownAssetId",
+        value: new ValueView_KnownAssetId({ amount: value.amount, metadata }),
+      },
+    });
+  }
+  return new ValueView({
+    valueView: {
+      case: "unknownAssetId",
+      value: new ValueView_UnknownAssetId({ ...value }),
+    },
+  });
+};
 
 const transfers = async (
   _req: TransfersRequest,
@@ -31,22 +53,24 @@ const transfers = async (
     .selectAll()
     .execute();
   const transfers = query.map((x) => {
+    const value = new Value({
+      assetId: new AssetId({ inner: x.asset_id }),
+      amount: new Amount(splitLoHi(BigInt(x.amount))),
+    });
     return new Transfer({
       height: x.height,
       timestamp: Timestamp.fromDate(x.timestamp),
       tx: x.tx && new TransactionId({ inner: x.tx }),
       transfer: new EventOutboundFungibleTokenTransfer({
-        value: new Value({
-          assetId: new AssetId({ inner: x.asset_id }),
-          amount: new Amount(splitLoHi(BigInt(x.amount))),
-        }),
         sender: new Address({ inner: x.sender }),
         receiver: x.receiever,
+        value,
         meta: new FungibleTokenTransferPacketMetadata({
           channel: x.channel,
           sequence: x.sequence,
         }),
       }),
+      value: viewValue(value),
     });
   });
   return new TransfersResponse({ transfers });
