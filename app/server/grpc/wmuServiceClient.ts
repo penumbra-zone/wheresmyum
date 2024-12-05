@@ -53,6 +53,7 @@ const transfers = async (
     .selectAll()
     .execute();
   const transfers = query.map((x) => {
+    console.log(x);
     const value = new Value({
       assetId: new AssetId({ inner: x.asset_id }),
       amount: new Amount(splitLoHi(BigInt(x.amount))),
@@ -63,7 +64,7 @@ const transfers = async (
       tx: x.tx && new TransactionId({ inner: x.tx }),
       transfer: new EventOutboundFungibleTokenTransfer({
         sender: new Address({ inner: x.sender }),
-        receiver: x.receiever,
+        receiver: x.receiver,
         value,
         meta: new FungibleTokenTransferPacketMetadata({
           channel: x.channel,

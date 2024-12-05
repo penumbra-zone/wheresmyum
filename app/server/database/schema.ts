@@ -10,7 +10,7 @@ export interface WmuTransfers {
   asset_id: Uint8Array;
   amount: string;
   sender: Uint8Array;
-  receiever: string;
+  receiver: string;
   height: bigint;
   tx?: Uint8Array;
 }
