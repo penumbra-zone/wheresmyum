@@ -43,6 +43,12 @@ const TransferRow = ({ transfer }: { transfer: Transfer }) => {
         </span>
       </Table.Td>
       <Table.Td>
+        <Text>
+          {transfer?.transfer?.meta?.channel}/
+          {transfer?.transfer?.meta?.sequence?.toString()}
+        </Text>
+      </Table.Td>
+      <Table.Td>
         <Timestamp timestamp={transfer.timestamp} />
       </Table.Td>
     </Table.Tr>
@@ -57,6 +63,7 @@ const ShowTransfers = ({ transfers }: { transfers: Transfer[] }) => {
           <Table.Th>Value</Table.Th>
           <Table.Th>From</Table.Th>
           <Table.Th>To</Table.Th>
+          <Table.Th>Packet</Table.Th>
           <Table.Th>Time</Table.Th>
         </Table.Tr>
       </Table.Thead>
