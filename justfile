@@ -21,3 +21,7 @@ check-rust:
 
 run-rust:
   cargo run --release --manifest-path {{cargo-manifest}}
+
+# Generate and munge the Penumbra proto definitions for Typescript
+proto:
+  pnpm run protos
