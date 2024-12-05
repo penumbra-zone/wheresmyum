@@ -2194,20 +2194,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ce23b50ad8242c51a442f3ff322d56b02f08852c77e4c0b4d3fd684abc89c683"
 
 [[package]]
-name = "indexer"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "cometindex",
- "penumbra-proto",
- "penumbra-shielded-pool",
- "pindexer",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "indexmap"
 version = "1.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5365,6 +5351,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5d642ff16b7e79272ae451b7322067cdc17cadf68c23264be9d94a32319efe7e"
 dependencies = [
  "rustls-pki-types",
+]
+
+[[package]]
+name = "wheresmyum-indexer"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "cometindex",
+ "penumbra-proto",
+ "penumbra-shielded-pool",
+ "pindexer",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]

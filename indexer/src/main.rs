@@ -1,5 +1,5 @@
 use clap::Parser as _;
-use indexer::augment_indexer;
+use wheresmyum_indexer::augment_indexer;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

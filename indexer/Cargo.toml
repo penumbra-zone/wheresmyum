@@ -1,7 +1,8 @@
 [package]
-name = "indexer"
+name = "wheresmyum-indexer"
 version = "0.1.0"
 edition = "2021"
+description = "Bespoke Penumbra event reindexer, intended for WheresMyUm web app"
 
 [dependencies]
 anyhow = "1.0.94"
