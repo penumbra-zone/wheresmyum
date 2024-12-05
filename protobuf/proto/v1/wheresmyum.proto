@@ -2,15 +2,28 @@ syntax = "proto3";
 
 package wheresmyum.v1;
 
-import "penumbra/core/num/v1/num.proto";
+import "google/protobuf/timestamp.proto";
+import "penumbra/core/component/shielded_pool/v1/shielded_pool.proto";
+import "penumbra/core/txhash/v1/txhash.proto";
 
-message TestRequest {
+message Transfer {
+  // The event triggering the transfer.
+  penumbra.core.component.shielded_pool.v1.EventOutboundFungibleTokenTransfer transfer = 1;
+  // The transaction (potentially missing) which triggered the transfer.
+  penumbra.core.txhash.v1.TransactionId tx = 2;
+  // The height at which the transfer was initiated.
+  uint64 height = 3;
+  // The time at which the transfer was initiated.
+  google.protobuf.Timestamp timestamp = 4;
 }
 
-message TestResponse {
-  repeated penumbra.core.num.v1.Amount msgs = 1;
+message TransfersRequest {
 }
 
-service TestService {
-  rpc Test(TestRequest) returns (TestResponse);
+message TransfersResponse {
+  repeated Transfer transfers = 1;
+}
+
+service WmuService {
+  rpc Transfers(TransfersRequest) returns (TransfersResponse);
 }

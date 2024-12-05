@@ -3,22 +3,22 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { TestRequest, TestResponse } from "./wheresmyum_pb.js";
+import { TransfersRequest, TransfersResponse } from "./wheresmyum_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
- * @generated from service wheresmyum.v1.TestService
+ * @generated from service wheresmyum.v1.WmuService
  */
-export const TestService = {
-  typeName: "wheresmyum.v1.TestService",
+export const WmuService = {
+  typeName: "wheresmyum.v1.WmuService",
   methods: {
     /**
-     * @generated from rpc wheresmyum.v1.TestService.Test
+     * @generated from rpc wheresmyum.v1.WmuService.Transfers
      */
-    test: {
-      name: "Test",
-      I: TestRequest,
-      O: TestResponse,
+    transfers: {
+      name: "Transfers",
+      I: TransfersRequest,
+      O: TransfersResponse,
       kind: MethodKind.Unary,
     },
   }

@@ -4,74 +4,138 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3 } from "@bufbuild/protobuf";
-import { Amount } from "@penumbra-zone/protobuf/penumbra/core/num/v1/num_pb";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
+import { EventOutboundFungibleTokenTransfer } from "@penumbra-zone/protobuf/penumbra/core/component/shielded_pool/v1/shielded_pool_pb";
+import { TransactionId } from "@penumbra-zone/protobuf/penumbra/core/txhash/v1/txhash_pb";
 
 /**
- * @generated from message wheresmyum.v1.TestRequest
+ * @generated from message wheresmyum.v1.Transfer
  */
-export class TestRequest extends Message<TestRequest> {
-  constructor(data?: PartialMessage<TestRequest>) {
+export class Transfer extends Message<Transfer> {
+  /**
+   * The event triggering the transfer.
+   *
+   * @generated from field: @penumbra-zone/protobuf/penumbra.core.component.shielded_pool.v1.EventOutboundFungibleTokenTransfer transfer = 1;
+   */
+  transfer?: EventOutboundFungibleTokenTransfer;
+
+  /**
+   * The transaction (potentially missing) which triggered the transfer.
+   *
+   * @generated from field: @penumbra-zone/protobuf/penumbra.core.txhash.v1.TransactionId tx = 2;
+   */
+  tx?: TransactionId;
+
+  /**
+   * The height at which the transfer was initiated.
+   *
+   * @generated from field: uint64 height = 3;
+   */
+  height = protoInt64.zero;
+
+  /**
+   * The time at which the transfer was initiated.
+   *
+   * @generated from field: google.protobuf.Timestamp timestamp = 4;
+   */
+  timestamp?: Timestamp;
+
+  constructor(data?: PartialMessage<Transfer>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "wheresmyum.v1.TestRequest";
+  static readonly typeName = "wheresmyum.v1.Transfer";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "transfer", kind: "message", T: EventOutboundFungibleTokenTransfer },
+    { no: 2, name: "tx", kind: "message", T: TransactionId },
+    { no: 3, name: "height", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "timestamp", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestRequest {
-    return new TestRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Transfer {
+    return new Transfer().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestRequest {
-    return new TestRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Transfer {
+    return new Transfer().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestRequest {
-    return new TestRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Transfer {
+    return new Transfer().fromJsonString(jsonString, options);
   }
 
-  static equals(a: TestRequest | PlainMessage<TestRequest> | undefined, b: TestRequest | PlainMessage<TestRequest> | undefined): boolean {
-    return proto3.util.equals(TestRequest, a, b);
+  static equals(a: Transfer | PlainMessage<Transfer> | undefined, b: Transfer | PlainMessage<Transfer> | undefined): boolean {
+    return proto3.util.equals(Transfer, a, b);
   }
 }
 
 /**
- * @generated from message wheresmyum.v1.TestResponse
+ * @generated from message wheresmyum.v1.TransfersRequest
  */
-export class TestResponse extends Message<TestResponse> {
-  /**
-   * @generated from field: repeated @penumbra-zone/protobuf/penumbra.core.num.v1.Amount msgs = 1;
-   */
-  msgs: Amount[] = [];
-
-  constructor(data?: PartialMessage<TestResponse>) {
+export class TransfersRequest extends Message<TransfersRequest> {
+  constructor(data?: PartialMessage<TransfersRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "wheresmyum.v1.TestResponse";
+  static readonly typeName = "wheresmyum.v1.TransfersRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "msgs", kind: "message", T: Amount, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestResponse {
-    return new TestResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TransfersRequest {
+    return new TransfersRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestResponse {
-    return new TestResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TransfersRequest {
+    return new TransfersRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestResponse {
-    return new TestResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TransfersRequest {
+    return new TransfersRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: TestResponse | PlainMessage<TestResponse> | undefined, b: TestResponse | PlainMessage<TestResponse> | undefined): boolean {
-    return proto3.util.equals(TestResponse, a, b);
+  static equals(a: TransfersRequest | PlainMessage<TransfersRequest> | undefined, b: TransfersRequest | PlainMessage<TransfersRequest> | undefined): boolean {
+    return proto3.util.equals(TransfersRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message wheresmyum.v1.TransfersResponse
+ */
+export class TransfersResponse extends Message<TransfersResponse> {
+  /**
+   * @generated from field: repeated wheresmyum.v1.Transfer transfers = 1;
+   */
+  transfers: Transfer[] = [];
+
+  constructor(data?: PartialMessage<TransfersResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "wheresmyum.v1.TransfersResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "transfers", kind: "message", T: Transfer, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TransfersResponse {
+    return new TransfersResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TransfersResponse {
+    return new TransfersResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TransfersResponse {
+    return new TransfersResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: TransfersResponse | PlainMessage<TransfersResponse> | undefined, b: TransfersResponse | PlainMessage<TransfersResponse> | undefined): boolean {
+    return proto3.util.equals(TransfersResponse, a, b);
   }
 }
 
