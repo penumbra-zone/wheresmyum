@@ -53,7 +53,6 @@ const transfers = async (
     .selectAll()
     .execute();
   const transfers = query.map((x) => {
-    console.log(x);
     const value = new Value({
       assetId: new AssetId({ inner: x.asset_id }),
       amount: new Amount(splitLoHi(BigInt(x.amount))),

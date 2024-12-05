@@ -14,6 +14,7 @@ import {
 import testServiceClient from "~/server/grpc/wmuServiceClient";
 import Timestamp from "~/components/Timestamp";
 import AddressComponent from "~/components/AddressComponent";
+import Tx from "~/components/Tx";
 
 const TransferRow = ({ transfer }: { transfer: Transfer }) => {
   if (!transfer.timestamp) {
@@ -27,9 +28,11 @@ const TransferRow = ({ transfer }: { transfer: Transfer }) => {
   if (!receiver) {
     throw new Error("missing receiver in transfer");
   }
+  const tx = transfer?.tx;
 
   return (
     <Table.Tr>
+      <Table.Td>{tx ? <Tx transactionId={tx} /> : undefined}</Table.Td>
       <Table.Td>
         <ValueViewComponent valueView={transfer.value} />
       </Table.Td>
@@ -60,6 +63,7 @@ const ShowTransfers = ({ transfers }: { transfers: Transfer[] }) => {
     <Table>
       <Table.Thead>
         <Table.Tr>
+          <Table.Th>Tx</Table.Th>
           <Table.Th>Value</Table.Th>
           <Table.Th>From</Table.Th>
           <Table.Th>To</Table.Th>
