@@ -13,6 +13,11 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  build: {
+    // Permit use of top-level `await`.
+    // Requires modern browsers.
+    target: 'esnext'
+  },
   css: {
     postcss: true,
   },

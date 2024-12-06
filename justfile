@@ -1,4 +1,3 @@
-# A justfile for dex-explorer development.
 # Documents common tasks for local dev.
 
 # run the app locally with live reload, via pnpm
@@ -11,9 +10,8 @@ container:
   podman build -f Containerfile -t wheresmyum .
 
 # run container
-run-container:
-  just container
-  podman run -e PENUMBRA_INDEXER_ENDPOINT -e PENUMBRA_INDEXER_CA_CERT -p 3000:3000 -it wheresmyum
+run-container: container
+  podman run -e PENUMBRA_INDEXER_ENDPOINT -e PENUMBRA_INDEXER_CA_CERT -p 3000:3000 --network=host wheresmyum
 
 cargo-manifest := "indexer/Cargo.toml"
 
@@ -22,3 +20,7 @@ check-rust:
 
 run-rust:
   cargo run --release --manifest-path {{cargo-manifest}}
+
+# Generate and munge the Penumbra proto definitions for Typescript
+proto:
+  pnpm run protos

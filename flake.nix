@@ -1,5 +1,5 @@
 {
-  description = "Dev shell for Penumbra insights dashboard web application";
+  description = "Dev shell for Penumbra WheresMyUm IBC explorer web application";
   # inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
@@ -17,7 +17,7 @@
             jq
             just
             pnpm
-            # nodejs_20
+            nodejs_20
             postgresql
 
             # for deployment/ci
