@@ -10,9 +10,8 @@ container:
   podman build -f Containerfile -t wheresmyum .
 
 # run container
-run-container:
-  just container
-  podman run -e PENUMBRA_INDEXER_ENDPOINT -e PENUMBRA_INDEXER_CA_CERT -p 3000:3000 -it wheresmyum
+run-container: container
+  podman run -e PENUMBRA_INDEXER_ENDPOINT -e PENUMBRA_INDEXER_CA_CERT -p 3000:3000 --network=host wheresmyum
 
 cargo-manifest := "indexer/Cargo.toml"
 
